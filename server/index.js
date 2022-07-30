@@ -32,8 +32,6 @@ io.on("connect", (socket) => {
 
   socket.on("join", ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
-
-    console.log("join user", user);
     if (error) return callback(error); //join 이벤트를 받고 나서 클라이언트쪽의 함수를 실행시킨다.
     socket.emit("message", {
       user: "admin",
